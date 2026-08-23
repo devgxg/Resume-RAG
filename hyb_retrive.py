@@ -1,5 +1,5 @@
 from rank_bm25 import BM25Okapi
-from retrive import dense_retrieve, collection
+from retrive import collection, model
 import re
 
 # --- BM25 setup ---
@@ -29,6 +29,22 @@ def bm25_retrieve(query: str, k: int = 3):
     scores = bm25.get_scores(tokenize(query))
     ranked = sorted(zip(bm25_ids, bm25_docs, bm25_metas, scores), key=lambda x: -x[3])
     return ranked[:k]
+
+def dense_retrieve(query: str, k: int = 3, min_similarity: float = 0.62):
+    prefixed_query = f"Represent this sentence for searching relevant passages: {query}"
+    query_vec = model.encode([prefixed_query], normalize_embeddings=True).tolist()
+
+    results = collection.query(query_embeddings=query_vec, n_results=k)
+
+    docs = results["documents"][0]
+    metadatas = results["metadatas"][0]
+    distances = results["distances"][0]
+
+    filtered = [
+        (doc, meta, dist) for doc, meta, dist in zip(docs, metadatas, distances)
+        if (1 - dist) >= min_similarity   # drop low-confidence dense matches
+    ]
+    return filtered
 
 # --- Reciprocal Rank Fusion ---
 def rrf_fuse(dense_results, bm25_results, k_const: int = 60, top_k: int = 3):
