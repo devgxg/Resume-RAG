@@ -44,7 +44,7 @@ def answer(query: str, k: int = 3):
     user_prompt = build_prompt(query, retrieved)
 
     response = client.chat.completions.create(
-        model="gemma2-9b-it",  # non-thinking, fast, instruction-tuned -- fits this factual-lookup task
+        model="openai/gpt-oss-120b",  # non-thinking, fast, instruction-tuned -- fits this factual-lookup task
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_prompt},

@@ -80,11 +80,11 @@ Vaish Public School, Rohtak, Haryana. Class XII, CBSE, 2021, 90.8 percent.
 Vaish Public School, Rohtak, Haryana. Class X, CBSE, 2019, 94.6 percent."""
     },
     {
-        "id": "achievements",
-        "section": "Achievements & Certifications",
-        "title": "Achievements, Leadership and Certifications",
-        "text": """MLSA Beta: Microsoft Learn Student Ambassador (Beta) by Microsoft.
-President of MLSAxAUH Tech Society, Amity University Haryana.
+    "id": "achievements",
+    "section": "Achievements & Certifications",
+    "title": "Achievements, Leadership and Certifications",
+    "text": """MLSA Beta: Microsoft Learn Student Ambassador (Beta) by Microsoft.
+President of MLSAxAUH Tech Society, Amity University Haryana — a leadership role leading and organizing the university's tech community.
 Hackathons: Top 10 at Hackverse, IILM University Haryana. Participated among 100 teams and reached finals at MasterX Hackathon. Participated in Triwizardathon and reached top 50 qualifying teams.
 Social Impact: Launched a fundraising campaign for Pawzz animal welfare organization.
 Certifications: SWAYAM Python Programming, NPTEL Foundations of Virtual Reality and Augmented Reality, McKinsey Forward Graduate Program."""

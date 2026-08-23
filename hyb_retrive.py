@@ -72,17 +72,16 @@ def rrf_fuse(dense_results, bm25_results, k_const: int = 60, top_k: int = 3):
     fused = sorted(scores.items(), key=lambda x: -x[1])
     return [(info[key][0], info[key][1], score) for key, score in fused[:top_k]]
 
-def hybrid_retrieve(query: str, k: int = 3, candidate_k: int = 5):
+def hybrid_retrieve(query: str, k: int = 6, candidate_k: int = 5):
     dense = dense_retrieve(query, k=candidate_k)
     sparse = bm25_retrieve(query, k=candidate_k)
     return rrf_fuse(dense, sparse, top_k=k)
 
 if __name__ == "__main__":
     test_queries = [
-        "What computer vision projects has Dev worked on?",
-        "What is Dev's CGPA?",
+        
         "Tell me about Dev's leadership experience",
-        "What is Dev's favorite food?",
+        
     ]
     for q in test_queries:
         print(f"\nQuery: {q}")
